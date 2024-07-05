@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="리소스 파일">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="GameFrameWork">
+      <UniqueIdentifier>{0645cae6-2358-45cd-a8e3-036f1f8c9231}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main">
+      <UniqueIdentifier>{1cbd9561-ec9a-4e5a-b2f8-4d45580ec4bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Garbage">
+      <UniqueIdentifier>{a17cfa27-f6b6-47a5-8b58-75d453e7e0ec}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GameFrameWork.h">
+      <Filter>GameFrameWork</Filter>
+    </ClInclude>
+    <ClInclude Include="DragonD.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Garbage</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Garbage</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Garbage</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="GameFrameWork.cpp">
+      <Filter>GameFrameWork</Filter>
+    </ClCompile>
+    <ClCompile Include="DragonD.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Garbage</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="DragonD.rc">
+      <Filter>리소스 파일</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="small.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+    <Image Include="DragonD.ico">
+      <Filter>리소스 파일</Filter>
+    </Image>
+  </ItemGroup>
+</Project>
