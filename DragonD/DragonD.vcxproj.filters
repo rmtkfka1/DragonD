@@ -31,6 +31,9 @@
     <ClInclude Include="targetver.h">
       <Filter>Garbage</Filter>
     </ClInclude>
+    <ClInclude Include="CGameTimer.h">
+      <Filter>GameFrameWork</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameFrameWork.cpp">
@@ -41,6 +44,9 @@
     </ClCompile>
     <ClCompile Include="stdafx.cpp">
       <Filter>Garbage</Filter>
+    </ClCompile>
+    <ClCompile Include="CGameTimer.cpp">
+      <Filter>GameFrameWork</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

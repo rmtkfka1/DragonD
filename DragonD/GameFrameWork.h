@@ -1,4 +1,6 @@
 #pragma once
+#include "CGameTimer.h"
+
 class CGameFramework
 {
 
@@ -77,6 +79,10 @@ public:
 	LRESULT CALLBACK OnProcessingWindowMessage(HWND hWnd, UINT nMessageID, WPARAM wParam,
 		LPARAM lParam);
 
+private:
+
+	CGameTimer m_GameTimer;
+	_TCHAR m_pszFrameRate[50];
 
 };
 

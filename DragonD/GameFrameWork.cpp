@@ -3,6 +3,8 @@
 
 CGameFramework::CGameFramework()
 {
+	_tcscpy_s(m_pszFrameRate, _T("LapProject ("));
+
 	m_pdxgiFactory = NULL;
 	m_pdxgiSwapChain = NULL;
 	m_pd3dDevice = NULL;
@@ -372,11 +374,14 @@ void CGameFramework::WaitForGpuComplete()
 
 void CGameFramework::FrameAdvance()
 {
+	m_GameTimer.Tick(0.0f);
+
 	ProcessInput();
 	AnimateObjects();
 
 	HRESULT hResult = m_pd3dCommandAllocator->Reset();
 	hResult = m_pd3dCommandList->Reset(m_pd3dCommandAllocator, NULL);
+
 	//명령 할당자와 명령 리스트를 리셋한다. 
 	D3D12_RESOURCE_BARRIER d3dResourceBarrier;
 	::ZeroMemory(&d3dResourceBarrier, sizeof(D3D12_RESOURCE_BARRIER));
@@ -424,6 +429,7 @@ void CGameFramework::FrameAdvance()
 	ID3D12CommandList *ppd3dCommandLists[] = { m_pd3dCommandList };
 	m_pd3dCommandQueue->ExecuteCommandLists(1, ppd3dCommandLists);
 	//명령 리스트를 명령 큐에 추가하여 실행한다. 
+
 	WaitForGpuComplete();
 	//GPU가 모든 명령 리스트를 실행할 때 까지 기다린다. 
 	DXGI_PRESENT_PARAMETERS dxgiPresentParameters;
@@ -431,10 +437,20 @@ void CGameFramework::FrameAdvance()
 	dxgiPresentParameters.pDirtyRects = NULL;
 	dxgiPresentParameters.pScrollRect = NULL;
 	dxgiPresentParameters.pScrollOffset = NULL;
+
 	m_pdxgiSwapChain->Present1(1, 0, &dxgiPresentParameters);
+
 	/*스왑체인을 프리젠트한다. 프리젠트를 하면 현재 렌더 타겟(후면버퍼)의 내용이 전면버퍼로 옮겨지고 렌더 타겟 인
 	덱스가 바뀔 것이다.*/
 
 	m_nSwapChainBufferIndex = m_pdxgiSwapChain->GetCurrentBackBufferIndex();
+
+
+	::_itow_s(m_GameTimer.m_nCurrentFrameRate, (m_pszFrameRate + 12), 37, 10);
+	::wcscat_s((m_pszFrameRate + 12), 37, _T(" FPS)"));
+
+	m_GameTimer.GetFrameRate(m_pszFrameRate + 12, 37);
+	::SetWindowText(m_hWnd, m_pszFrameRate);
+
 }
 
